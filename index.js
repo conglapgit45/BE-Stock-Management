@@ -20,7 +20,7 @@ app.use(session({
   saveUninitialized: true,
   // store: memoryStore,
   proxy : true,
-  cookie: { maxAge: 1000*60*60*2 }
+  cookie: { sameSite: none, maxAge: 1000*60*60*2 }
 }))
 app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
