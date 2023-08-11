@@ -19,7 +19,7 @@ exports.LoginAPI = async (req, res, next) => {
                 length: 49,
                 charset: ['alphabetic', 'numeric']
             })
-            res.cookie('authToken', authToken, { maxAge: 1000*60*60*4, httpOnly: true, secure: true, signed: true })
+            res.cookie('authToken', authToken, { sameSite: 'none', maxAge: 1000*60*60*4, httpOnly: true, secure: true, signed: true })
             res.cookie('authToken', authToken)
             req.session.authToken = authToken
             console.log('login: ' + req.session.authToken)
