@@ -1,8 +1,11 @@
+
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://truongvodich2902:kJCx5KOet2swqo8E@cluster-truongconglap.ulabrrh.mongodb.net/simpledb?retryWrites=true&w=majority')
+        await mongoose.connect(process.env.DB_URI)
         console.log('Database Connection Successfully.');
     }
     catch (error) {

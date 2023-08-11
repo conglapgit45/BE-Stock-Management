@@ -4,9 +4,16 @@ const mongoose = require('mongoose')
 
 const usersSchema = new mongoose.Schema(
 	{
-		name: { type: String, required: true },
-		email: { type: String, required: true, unique: true },
-		password: { type: String, required: true },
+		fullname: {type: String, trim: true, required: [true, 'Fullname must be required']},
+		email: {type: String, unique: true, trim: true, required: [true, 'Email must be required']},
+		department: {type: String, trim: true, required: [true, 'Function must be required']},
+        role: {type: String, trim: true, required: [true, 'Role must be required']},
+		userID: {type: String, unique: true, trim: true, required: [true, 'User ID must be required']},
+		password: {type: String, trim: true, required: [true, 'Password must be required'],
+			minlength: [6, 'Password must be at least 6 characters']}
+	},
+    {
+		timestamps: true
 	},
 )
 
