@@ -11,6 +11,7 @@ exports.AuthChecking = async (req, res, next) => {
     try {
         const authToken = await req.session.authToken
         console.log('auth: ' + authToken)
+        console.log('cookie: ' + req.signedCookies.authToken)
         if (jwt.verify(req.header('accesstoken'), process.env.JWT_SECRET).authToken == authToken) {
             isLoggedIn = true
             console.log(isLoggedIn)
