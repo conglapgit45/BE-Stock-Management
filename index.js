@@ -14,14 +14,14 @@ connectDB()
 
 const app = express()
 app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-  secret: 'abcdefg',
-  resave: true,
-  saveUninitialized: true,
-  // store: memoryStore,
-  proxy : true,
-  cookie: { sameSite: 'none', secure: true, httpOnly: true, maxAge: 1000*60*60*2 }
-}))
+// app.use(session({
+//   secret: 'abcdefg',
+//   resave: true,
+//   saveUninitialized: true,
+//   // store: memoryStore,
+//   proxy : true,
+//   cookie: { sameSite: 'none', secure: true, httpOnly: true, maxAge: 1000*60*60*2 }
+// }))
 app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 // app.use(cookieParser())
