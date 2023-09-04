@@ -7,7 +7,7 @@ exports.LogoutAPI = async (req, res, next) => {
         // const authToken = await req.session.authToken
         // console.log('out: ' + authToken)
         console.log('out cookie: ' + await req.signedCookies.authToken)
-        res.clearCookie('accessAuth').send()
+        // res.clearCookie('accessAuth').send()
         res.clearCookie('authToken').send()
         // res.clearCookie('session').send()
     }
