@@ -3,9 +3,9 @@ const express = require('express')
 const cors = require('cors')
 const { connectDB } = require('./models/connectionDB');
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
-// const session = require('cookie-session')
+const session = require('express-session')    // const session = require('cookie-session')
 const authRoute = require('./routes/authRoute')
+const {spawn} = require('child_process')
 
 
 require('dotenv').config()
@@ -39,6 +39,16 @@ app.use(cors({
 
 app.use('/api', authRoute)
 
+app.get('/python', (req, res) => {
+    const pyResult = spawn('python', ['pythonScript.py'])
+    pyResult.stdout.on('data', function(data) {
+        data1 = data.toString()
+    })
+    pyResult.on('close', (code) => {
+        res.send(data1)
+    })
+})
+
 app.listen(process.env.APP_PORT, () => {
-	console.log('Server running on port ' + process.env.APP_PORT)
+	  console.log('Server running on port ' + process.env.APP_PORT)
 })

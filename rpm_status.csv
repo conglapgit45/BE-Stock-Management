@@ -1,0 +1,13 @@
+,Parameter,Plant,Num.of Pallet
+0,Stock on Hand,FOOD,106418.0
+1,Incoming Stock,FOOD,0.0
+2,WH Capacity,FOOD,400.0
+3,Stock on Hand,HCL,292932.0
+4,Incoming Stock,HCL,218443.0
+5,WH Capacity,HCL,2800.0
+6,Stock on Hand,ORAL,88703.0
+7,Incoming Stock,ORAL,10914.0
+8,WH Capacity,ORAL,650.0
+9,Stock on Hand,PCL,191967.0
+10,Incoming Stock,PCL,367637.0
+11,WH Capacity,PCL,800.0
