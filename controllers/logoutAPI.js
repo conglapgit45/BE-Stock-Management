@@ -6,10 +6,11 @@ exports.LogoutAPI = async (req, res, next) => {
     try {
         // const authToken = await req.session.authToken
         // console.log('out: ' + authToken)
-        res.clearCookie('authToken').end()
         console.log('out cookie: ' + await req.signedCookies.authToken)
         // res.clearCookie('accessAuth').send()
+        res.clearCookie('authToken')
         // res.clearCookie('session').send()
+        res.status(200).json('User Logged out')
     }
     catch (error) {
         console.error(error)
