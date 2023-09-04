@@ -4,8 +4,8 @@ const cookieParser = require('cookie-parser')
 
 exports.LogoutAPI = async (req, res, next) => {
     try {
-        const authToken = await req.session.authToken
-        console.log('out: ' + authToken)
+        // const authToken = await req.session.authToken
+        // console.log('out: ' + authToken)
         console.log('out cookie: ' + req.signedCookies.authToken)
         res.clearCookie('accessAuth').send()
         // res.clearCookie('session').send()
