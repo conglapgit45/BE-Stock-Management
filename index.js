@@ -26,9 +26,10 @@ app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 // app.use(cookieParser())
 
-//   app.use(cors())
+// app.use(cors())
 app.use(cors({
-    origin: [process.env.ACCEPTED_ORIGIN_001, process.env.ACCEPTED_ORIGIN_002, process.env.ACCEPTED_ORIGIN_003],
+    // origin: '*',
+    origin: [process.env.ACCEPTED_ORIGIN_001,process.env.ACCEPTED_ORIGIN_002,process.env.ACCEPTED_ORIGIN_003],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
     // exposedHeaders: ['Content-Type'],
     maxAge: 60 * 60 * 4,
