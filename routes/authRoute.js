@@ -14,7 +14,7 @@ const {AuthChecking} = require('../middleWares/authChecker')
 
 
 Router.route('/login').post(LoginAPI)
-Router.route('/logout').get(LogoutAPI)
+Router.route('/logout').post(LogoutAPI)
 Router.route('/loggedin').get(LoggedinAPI)
 Router.route('/operation').post(AuthChecking, OperationAPI)
 Router.route('/location').post(LocationAPI)
