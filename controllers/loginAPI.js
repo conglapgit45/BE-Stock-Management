@@ -21,7 +21,7 @@ exports.LoginAPI = async (req, res, next) => {
             })
             res.cookie('authToken', authToken, { sameSite: 'none', maxAge: 1000*60*60*4, httpOnly: true, secure: true, signed: true })
             req.session.authToken = authToken
-            console.log('login cookie: ' + req.cookie.authToken)
+            console.log('login cookie: ' + req.signedCookies.authToken)
             console.log('login: ' + req.session.authToken)
             const accessToken = jwt.sign({authToken: authToken}, process.env.JWT_SECRET)
             res.status(201).json({data: {accessToken: accessToken, userID: checkUserExisting.userID, role: checkUserExisting.role}, message:"Login Successfully"})
