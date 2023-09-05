@@ -28,7 +28,6 @@ exports.AuthChecking = async (req, res, next) => {
                 sound: true,
                 wait: true
             })
-            next()
         }
     }
     catch (error) {
