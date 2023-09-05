@@ -11,8 +11,10 @@ exports.OperationAPI = async (req, res, next) => {
         itemsData = [...new Map(itemsData.map(item => [item['item_code'], item])).values()]
         itemsData = itemsData.sort((a, b) => parseFloat(a.item_code) - parseFloat(b.item_code))
         console.log("CHeck 02")
-        res.status(201) // .json({data: itemsData, message: 'List of items'})
+        res.status(201)
         console.log("CHeck 03")
+        return res.json({data: itemsData, message: 'List of items'})
+        console.log("CHeck 04")
     }
     catch (error) {
         console.log(error)
