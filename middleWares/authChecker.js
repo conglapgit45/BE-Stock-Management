@@ -13,13 +13,13 @@ exports.AuthChecking = async (req, res, next) => {
         console.log('auth cookie: ' + authToken)
         if (jwt.verify(req.header('accesstoken'), process.env.JWT_SECRET).authToken == authToken) {
             isLoggedIn = true
-            next()
+            // next()
         }
         console.log('isLoggedIn: ' + isLoggedIn)
         next()
     }
     catch (error) {
         console.log(error)
-        next()
+        // next()
     }
   }
