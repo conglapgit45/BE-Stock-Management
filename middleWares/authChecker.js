@@ -19,16 +19,16 @@ exports.AuthChecking = async (req, res, next) => {
             console.log('Authority')
             next()
         }
-        else {
-            res.json({data: [], message: 'You are not authorized to access this function'})
-            console.log('You are not authorized to access this function')
-            notifier.notify({
-                title: 'Salutations!',
-                message: 'Hey there!',
-                sound: true,
-                wait: true
-            })
-        }
+        // else {
+        //     res.json({data: [], message: 'You are not authorized to access this function'})
+        //     console.log('You are not authorized to access this function')
+        //     notifier.notify({
+        //         title: 'Salutations!',
+        //         message: 'Hey there!',
+        //         sound: true,
+        //         wait: true
+        //     })
+        // }
     }
     catch (error) {
         console.log(error)
