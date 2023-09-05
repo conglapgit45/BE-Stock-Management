@@ -15,7 +15,7 @@ exports.AuthChecking = async (req, res, next) => {
             // next()
         }
         if (isLoggedIn == true && req.header('role') == 'ADMIN') {
-            console.log(req.header())
+            console.log('Authority')
             next()
         }
     }
