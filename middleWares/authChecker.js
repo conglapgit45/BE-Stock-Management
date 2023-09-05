@@ -18,6 +18,9 @@ exports.AuthChecking = async (req, res, next) => {
             console.log('Authority')
             next()
         }
+        else {
+            console.log('You are not authorized to access this function')
+        }
     }
     catch (error) {
         console.log(error)
