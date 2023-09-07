@@ -23,7 +23,7 @@ exports.LoginAPI = async (req, res, next) => {
             // console.log('login: ' + req.session.authToken)
             // req.session.authToken = authToken
             const accessToken = jwt.sign({authToken: authToken}, process.env.JWT_SECRET)
-            res.status(201).json({data: {accessToken: accessToken, userID: checkUserExisting.userID, role: checkUserExisting.role}, message:"Login Successfully"})
+            res.status(201).json({data: {accessToken: accessToken, userID: checkUserExisting.userID, role: checkUserExisting.role, pageName: 'HOME'}, message:"Login Successfully"})
         }
         if (!req.body.userID || !req.body.password) {
             return res.status(400).json({data: null, message: 'User ID and Password are required'})
