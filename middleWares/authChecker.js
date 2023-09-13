@@ -15,19 +15,13 @@ exports.AuthChecking = async (req, res, next) => {
             isLoggedIn = true
             // next()
         }
-        if (isLoggedIn == true && req.header('role') == 'ADMIN') {
+        if (isLoggedIn == true && req.header('role') == 'MANAGEMENT') {
             console.log('Authority')
             next()
         }
         else {
-        //     res.json({data: [], message: 'You are not authorized to access this function'})
+            res.json({data: [], message: 'You are not authorized to access this function'})
             console.log('You are not authorized to access this function')
-            notifier.notify({
-                title: 'Salutations!',
-                message: 'Hey there!',
-                sound: true,
-                wait: true
-            })
         }
     }
     catch (error) {

@@ -20,6 +20,7 @@ Router.route('/operation').post(AuthChecking, OperationAPI)
 Router.route('/location').post(LocationAPI)
 Router.route('/alllocation').get(AllLocationAPI)
 Router.route('/transfer').post(TransferAPI)
+Router.route('/report').post(AuthChecking, ReportAPI)
 Router.route('/insertdata').get(InsertDataAPI)
 Router.route('/deletealldata').get(DeleteAllDataAPI)
 
