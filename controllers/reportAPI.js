@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 exports.ReportAPI = async (req, res, next) => {
     try {
         const accessToken = await req.signedCookies.accessToken
-        console.log('Report cookie: ' + jwt.verify(accessToken, process.env.JWT_SECRET))
+        console.log('Report cookie: ' + jwt.verify(accessToken, process.env.JWT_SECRET).accessToken.userID)
     }
     catch (error) {
         console.error(error)
