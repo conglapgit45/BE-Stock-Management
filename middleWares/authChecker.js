@@ -17,7 +17,7 @@ exports.AuthChecking = async (req, res, next) => {
             console.log(isLoggedIn)
             // next()
         }
-        if (isLoggedIn == true && req.header('role') == 'MANAGEMENT') {
+        if (isLoggedIn == true && jwt.verify(accessToken, process.env.JWT_SECRET).role == 'ADMIN') {
             console.log('Authority')
             next()
         }
