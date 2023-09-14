@@ -10,10 +10,11 @@ exports.AuthChecking = async (req, res, next) => {
     var isLoggedIn = false
     var authority = false
     try {
-        const authToken = await req.signedCookies.authToken
-        console.log('authChecker: ' + authToken)
-        if (jwt.verify(req.header('accesstoken'), process.env.JWT_SECRET) == authToken) {
+        const accessToken = await req.signedCookies.accessToken
+        console.log('authChecker: ' + accessToken)
+        if (jwt.verify(accessToken, process.env.JWT_SECRET).authToken == authToken) {
             isLoggedIn = true
+            console.log(isLoggedIn)
             // next()
         }
         if (isLoggedIn == true && req.header('role') == 'MANAGEMENT') {

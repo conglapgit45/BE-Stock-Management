@@ -19,12 +19,14 @@ exports.LoginAPI = async (req, res, next) => {
                 length: 49,
                 charset: ['alphabetic', 'numeric']
             })
-            console.log('login: ' + authToken)
-            res.cookie('authToken', authToken, { sameSite: 'none', maxAge: 1000*15, httpOnly: true, secure: true, signed: true })
+            const accessToken = jwt.sign({accessToken: {
+                authToken: authToken,
+                userID: checkUserExisting.userID,
+                role: checkUserExisting.role
+            }}, process.env.JWT_SECRET)
+            res.cookie('accessToken', accessToken, { sameSite: 'none', maxAge: 1000*60*60*4, httpOnly: true, secure: true, signed: true })
             // console.log('login: ' + req.session.authToken)
-            // req.session.authToken = authToken
-            const accessToken = jwt.sign({authToken: authToken}, process.env.JWT_SECRET)
-            res.status(201).json({data: {accessToken: accessToken, userID: checkUserExisting.userID, role: checkUserExisting.role, pageName: 'HOME'}, message:"Login Successfully"})
+            res.status(201).json({data: {pageName: 'HOME'}, message:"Login Successfully"})
         }
         if (!req.body.userID || !req.body.password) {
             return res.status(400).json({data: null, message: 'User ID and Password are required'})
