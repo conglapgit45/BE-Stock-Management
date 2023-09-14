@@ -5,7 +5,8 @@ const cookieParser = require('cookie-parser')
 
 exports.ReportAPI = async (req, res, next) => {
     try {
-        console.log('Report cookie: ' + await req.signedCookies.authToken)
+        const accessToken = await req.signedCookies.accessToken
+        console.log('Report cookie: ' + jwt.verify(accessToken, process.env.JWT_SECRET).accessToken)
     }
     catch (error) {
         console.error(error)
