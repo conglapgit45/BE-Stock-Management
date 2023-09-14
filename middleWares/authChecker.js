@@ -12,7 +12,7 @@ exports.AuthChecking = async (req, res, next) => {
     try {
         const accessToken = await req.signedCookies.accessToken
         console.log('authChecker: ' + accessToken)
-        if (jwt.verify(accessToken, process.env.JWT_SECRET).authToken == authToken) {
+        if (jwt.verify(accessToken, process.env.JWT_SECRET)) {
             isLoggedIn = true
             console.log(isLoggedIn)
             // next()
