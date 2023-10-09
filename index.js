@@ -50,7 +50,7 @@ app.get('/python', (req, res) => {
     })
 })
 
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
     res.cookie('token', '123456789', { sameSite: 'none', maxAge: 1000*10, httpOnly: true, secure: true, signed: false })
     res.send('login here')
 })
