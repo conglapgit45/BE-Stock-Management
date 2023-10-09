@@ -50,6 +50,21 @@ app.get('/python', (req, res) => {
     })
 })
 
+app.get('/login', (req, res) => {
+    res.cookie('token', '123456789', { sameSite: 'none', maxAge: 1000*10, httpOnly: true, secure: true, signed: false })
+    res.send('login here')
+})
+app.get('/logout', async (req, res) => {
+    const token = await req.cookies.token
+    if (token) {
+        console.log('authChecker: ' + token)
+    }
+    else {
+        console.log('authChecker: ' + 'expired')
+    }
+    res.send('logout here')
+})
+
 app.listen(process.env.APP_PORT, () => {
 	  console.log('Server running on port ' + process.env.APP_PORT)
 })

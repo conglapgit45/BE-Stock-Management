@@ -26,7 +26,7 @@ exports.LoginAPI = async (req, res, next) => {
             }}, process.env.JWT_SECRET)
             res.cookie('accessToken', accessToken, { sameSite: 'none', maxAge: 1000*60*60*4, httpOnly: true, secure: true, signed: true })
             // console.log('login: ' + req.session.authToken)
-            res.status(201).json({data: {pageName: 'HOME'}, message:"Login Successfully"})
+            res.status(201).json({data: {userID: checkUserExisting.userID, role: checkUserExisting.role, pageName: 'HOME'}, message:"Login Successfully"})
         }
         if (!req.body.userID || !req.body.password) {
             return res.status(400).json({data: null, message: 'User ID and Password are required'})
